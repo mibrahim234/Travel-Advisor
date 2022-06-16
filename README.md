@@ -1,5 +1,6 @@
 # Travel-Advisor
 Search For a city and what to do there using Google API
+--along with weather api 
 
 You'll learn:
 -react best practices, hooks and file structure
