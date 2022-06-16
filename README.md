@@ -7,3 +7,5 @@ You'll learn:
 -.env file: improve security
 -create user interfaces with MUI
 -fetching data with rapid API & working with google API 
+
+npx create-react-app ./ | to create empty react app in folder 
