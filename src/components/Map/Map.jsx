@@ -8,9 +8,36 @@ import Rating from '@material-ui/lab';
 import useStyles from './styles'; 
 
 const Map = () => {
-    return (
-        <h1>Map</h1>
-    );
+    // calling these with hooks 
+    const classes = useStyles();
+    // this will be set to false if mobile width is larger than 600px 
+    const isMobile = useMediaQuery('(min-width:600px)');
+
+    const coordinates = { lat: 0, lng: 0 };
+        return (
+    <div className={classes.mapContainer}>
+        {/* Need a bunch of props to use */}
+        <GoogleMapReact
+        // key from cloud site
+            bootstrapURLKeys={{key: ''}}
+            // default center of the map where we pass in the coord
+            defaultCenter={coordinates}
+            // current center of the map 
+            center={coordinates}
+            defaultZoom={14}
+            margin={[50, 50, 50, 50]}
+            options={''}
+            onChange={''}
+            // Used when you click on a restaurant on the map
+            onChildClick={''}
+
+        >
+
+</GoogleMapReact>
+
+     </div>
+
+        );
 }
 
 export default Map; 
