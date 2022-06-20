@@ -19,7 +19,7 @@ const Map = () => {
         {/* Need a bunch of props to use */}
         <GoogleMapReact
         // key from cloud site
-            bootstrapURLKeys={{key: ''}}
+            bootstrapURLKeys={{key: 'AIzaSyBCp9NPLvRhYX2rzFd593Q4HsPYsywpdPU'}}
             // default center of the map where we pass in the coord
             defaultCenter={coordinates}
             // current center of the map 
