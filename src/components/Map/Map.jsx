@@ -5,6 +5,7 @@ import { Paper, Typography, useMediaQuery } from '@material-ui/core';
 // use media query makes map more responsive 
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
 import Rating from '@material-ui/lab';
+
 import useStyles from './styles'; 
 
 const Map = () => {
