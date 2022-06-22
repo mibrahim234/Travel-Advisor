@@ -5,24 +5,12 @@ import PlaceDetails from '../PlaceDetails/PlaceDetails';
 
 import useStyles from './styles';
 
-const List = () => {
+const List = ( {places} ) => {
     const classes = useStyles();
     // first thing is the state, second thing is a function that modifies the state, accepts one param
     const [type, setType] = useState('restaurants');
     const [rating, setRating] = useState('');
 
-    // dummy data 
-    const places = [
-        { name: 'Cool place'},
-        { name: 'best soda'},
-        { name: 'best food'},
-        { name: 'Cool place'},
-        { name: 'best soda'},
-        { name: 'best food'},
-        { name: 'Cool place'},
-        { name: 'best soda'},
-        { name: 'best food'},
-];
     return (
         <div className={classes.container}>
             <Typography variant="h4">Restaurants, Hotels & Attractions around you</Typography>
