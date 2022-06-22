@@ -1,8 +1,9 @@
 import React from 'react';
 
-const PlaceDetails = () => {
+// Passing in props, placed place in list and using it here 
+const PlaceDetails = ({ place }) => {
     return (
-        <h1>PlaceDetails</h1>
+        <h1>{place.name}</h1>
     );
 }
 
