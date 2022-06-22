@@ -13,14 +13,14 @@ const App= () => {
     // state for restuarant data 
     const [places, setPlaces] = useState([]);
 
-    const [coordinates, setCoordinates ] = useState({ lat: 0, lng: 0 });
+    const [coordinates, setCoordinates ] = useState({});
     const [ bounds, setBounds ] = useState = (null);
 
     // useeffect to get users location
     // geolocation is built in with user's api 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude } }) => {
-          setCoords({ lat: latitude, lng: longitude });
+          setCoordinates({ lat: latitude, lng: longitude });
         });
       }, []);
 
@@ -28,7 +28,7 @@ const App= () => {
     // if dependency array is empty code will only run at the start 
     // getplacesdata is a async function so we have to call .then 
     useEffect(() => {
-        getPlacesData()
+        getPlacesData(bounds.sw, bounds.ne)
         // we grab the data with .then and sent them to the state 
             .then((data) => {
                 console.log(data);
