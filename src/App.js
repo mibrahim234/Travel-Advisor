@@ -13,8 +13,16 @@ const App= () => {
     // state for restuarant data 
     const [places, setPlaces] = useState([]);
 
-    const [coordinates, setCoordinates ] = useState({});
+    const [coordinates, setCoordinates ] = useState({ lat: 0, lng: 0 });
     const [ bounds, setBounds ] = useState = (null);
+
+    // useeffect to get users location
+    // geolocation is built in with user's api 
+    useEffect(() => {
+        navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude } }) => {
+          setCoords({ lat: latitude, lng: longitude });
+        });
+      }, []);
 
     // useEffect function that accepts another callback function
     // if dependency array is empty code will only run at the start 
@@ -26,7 +34,7 @@ const App= () => {
                 console.log(data);
                 setPlaces(data);
             })
-    }, []);
+    }, [coordinates, bounds]);
     return (
         // Call the components 
         <>

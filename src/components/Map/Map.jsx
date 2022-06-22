@@ -8,13 +8,13 @@ import Rating from '@material-ui/lab';
 
 import useStyles from './styles'; 
 
-const Map = () => {
+// add props to map
+const Map = ({ setCoordinates, setBounds, coordinates }) => {
     // calling these with hooks 
     const classes = useStyles();
     // this will be set to false if mobile width is larger than 600px 
     const isMobile = useMediaQuery('(min-width:600px)');
 
-    const coordinates = { lat: 0, lng: 0 };
         return (
     <div className={classes.mapContainer}>
         {/* Need a bunch of props to use */}
@@ -28,8 +28,11 @@ const Map = () => {
             defaultZoom={14}
             margin={[50, 50, 50, 50]}
             options={''}
-            onChange={''}
-            // Used when you click on a restaurant on the map
+            // populate variables with coordinates & bounds when changing map 
+            onChange={(e) => {
+                setCoordinates({ lat: e.center.lat, lng: e.center.lng });
+                setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
+              }}            // Used when you click on a restaurant on the map
             onChildClick={''}
 
         >
