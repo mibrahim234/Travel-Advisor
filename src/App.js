@@ -13,6 +13,9 @@ const App= () => {
     // state for restuarant data 
     const [places, setPlaces] = useState([]);
 
+    const [coordinates, setCoordinates ] = useState({});
+    const [ bounds, setBounds ] = useState = (null);
+
     // useEffect function that accepts another callback function
     // if dependency array is empty code will only run at the start 
     // getplacesdata is a async function so we have to call .then 
@@ -37,7 +40,12 @@ const App= () => {
         </Grid>
 
         <Grid item xs={12} md={8}>
-        <Map /> 
+             {/* Pass setting functions of state above as props to map */}
+        <Map 
+        setCoordinates={setCoordinates}
+        setBounds={setBounds}
+        coordinates={coordinates}
+        /> 
         </Grid>
     </Grid>
 
