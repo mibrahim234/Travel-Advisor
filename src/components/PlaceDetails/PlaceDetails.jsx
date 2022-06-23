@@ -17,10 +17,28 @@ const PlaceDetails = ({ place }) => {
             image={place.photo ? place.photo.images.large.url : 'https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg'} 
             title={place.name }
         />
+
+        {/* Price box/restaraunt name */}
     <CardContent>
         {/* Gutterbtm means margin bottom */}
         <Typography gutterBottom variant="h5">{place.name}</Typography>
+        <Box display="flex" justifyContent="space-between">
+        <Typography variant="subtitle1">Price</Typography>
+        <Typography gutterBottom variant="subtitle1">{place.price_level}</Typography>
+        </Box>
 
+        {/* Ratingbox */}
+        <Box display="flex" justifyContent="space-between">
+        <Typography variant="subtitle1">Ranking</Typography>
+        <Typography gutterBottom variant="subtitle1">{place.ranking}</Typography>
+        </Box>
+
+        {/* if restaurant has awards display it, my is for margin top/btm */}
+        {place?.awards?.map((award) => (
+            <Box my={1} display="flex" justifyContent="space-between" alignItems="center">
+                <img src={award.images.small} alt={award.display_name} />
+            </Box>
+        ))}
     </CardContent>
     </Card>
         );
