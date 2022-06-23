@@ -55,8 +55,23 @@ const PlaceDetails = ({ place }) => {
         )}
 
         {/* Phone number of cuisine */}
-        
+        {place.phone && (
+          <Typography variant="body2" color="textSecondary" className={classes.spacing}>
+            <PhoneIcon /> {place.phone}
+          </Typography>
+        )}
     </CardContent>
+            {/* lead us to restaurant address/website */}
+            <CardActions>
+                {/* window.open with blank will open a new tab when going to the site  */}
+        <Button size="small" color="primary" onClick={() => window.open(place.web_url, '_blank')}>
+          Trip Advisor
+        </Button>
+        <Button size="small" color="primary" onClick={() => window.open(place.website, '_blank')}>
+          Website
+        </Button>
+      </CardActions>
+
     </Card>
         );
 }
