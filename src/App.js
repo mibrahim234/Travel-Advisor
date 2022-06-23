@@ -14,7 +14,7 @@ const App= () => {
     const [places, setPlaces] = useState([]);
 
     const [coordinates, setCoordinates ] = useState({});
-    const [ bounds, setBounds ] = useState = (null);
+    const [ bounds, setBounds ] = useState = ({});
 
     // useeffect to get users location
     // geolocation is built in with user's api 
