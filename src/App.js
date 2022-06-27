@@ -50,6 +50,7 @@ const App= () => {
         <Grid item xs={12} md={8}>
              {/* Pass setting functions of state above as props to map */}
              {/* when props get complicated use redux or react context */}
+             {/* Restuarant places will show up on map now */}
         <Map 
         setCoordinates={setCoordinates}
         setBounds={setBounds}

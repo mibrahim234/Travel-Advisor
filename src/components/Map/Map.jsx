@@ -9,7 +9,7 @@ import Rating from '@material-ui/lab';
 import useStyles from './styles'; 
 
 // add props to map
-const Map = ({ setCoordinates, setBounds, coordinates }) => {
+const Map = ({ setCoordinates, setBounds, coordinates, places, setChildClicked, weatherData }) => {
     // calling these with hooks 
     const classes = useStyles();
     // this will be set to false if mobile width is larger than 600px 
@@ -27,16 +27,24 @@ const Map = ({ setCoordinates, setBounds, coordinates }) => {
             center={coordinates}
             defaultZoom={14}
             margin={[50, 50, 50, 50]}
-            options={''}
+            options={{ disableDefaultUI: true, zoomControl: true, styles: mapStyles }}
             // populate variables with coordinates & bounds when changing map 
             onChange={(e) => {
                 setCoordinates({ lat: e.center.lat, lng: e.center.lng });
                 setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
-              }}            // Used when you click on a restaurant on the map
-            onChildClick={''}
-
-        >
-
+              }}        
+    // Used when you click on a restaurant on the map
+    onChildClick={(child) => setChildClicked(child)}
+    >        
+            {/* Show place data */}
+            {/* Using values as strings so have to use number constructor to convert them */}
+            {place?.map(() => (
+                <div>
+                    className={classes.markerContainer}
+                    lat={place.latitude}
+                    lng={place.longtitude}
+                </div>
+            ))}
     </GoogleMapReact>
      </div>
 
