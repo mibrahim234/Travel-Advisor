@@ -13,7 +13,7 @@ const Map = ({ setCoordinates, setBounds, coordinates, places, setChildClicked, 
     // calling these with hooks 
     const classes = useStyles();
     // this will be set to false if mobile width is larger than 600px 
-    const isMobile = useMediaQuery('(min-width:600px)');
+    const isDesktop = useMediaQuery('(min-width:600px)');
 
         return (
     <div className={classes.mapContainer}>
@@ -48,14 +48,16 @@ const Map = ({ setCoordinates, setBounds, coordinates, places, setChildClicked, 
             >
                
      {/* render different things whether user is on mobile or desktop */}
-     {!matches
-              ? <LocationOnOutlinedIcon color="primary" fontSize="large" />
-              : (
+     {
+     !isDesktop ? (
+      <LocationOnOutlinedIcon color="primary" fontSize="large" />
+             ) : (
                 <Paper elevation={3} className={classes.paper}>
                   <Typography className={classes.typography} variant="subtitle2" gutterBottom> {place.name}</Typography>
                   <img
                     className={classes.pointer}
                     src={place.photo ? place.photo.images.large.url : 'https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg'}
+                    alt={place.name}
                   />
                   <Rating name="read-only" size="small" value={Number(place.rating)} readOnly />
                 </Paper>
