@@ -49,10 +49,12 @@ const App= () => {
 
         <Grid item xs={12} md={8}>
              {/* Pass setting functions of state above as props to map */}
+             {/* when props get complicated use redux or react context */}
         <Map 
         setCoordinates={setCoordinates}
         setBounds={setBounds}
         coordinates={coordinates}
+        places={places}
         /> 
         </Grid>
     </Grid>
