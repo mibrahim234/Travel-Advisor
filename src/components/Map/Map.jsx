@@ -39,10 +39,12 @@ const Map = ({ setCoordinates, setBounds, coordinates, places, setChildClicked, 
             {/* Show place data */}
             {/* Using values as strings so have to use number constructor to convert them */}
             {place?.map(() => (
-                <div>
-                    className={classes.markerContainer}
-                    lat={place.latitude}
-                    lng={place.longtitude}
+                <div
+             className={classes.markerContainer}
+            lat={Number(place.latitude)}
+            lng={Number(place.longitude)}
+            key={i}
+            >
                 </div>
             ))}
     </GoogleMapReact>
