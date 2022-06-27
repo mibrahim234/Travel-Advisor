@@ -22,6 +22,13 @@ const PlaceDetails = ({ place }) => {
     <CardContent>
         {/* Gutterbtm means margin bottom */}
         <Typography gutterBottom variant="h5">{place.name}</Typography>
+        {/* Rating icon box */}
+        <Box display="flex" justifyContent="space-between" my={2}>
+          <Rating name="read-only" value={Number(place.rating)} readOnly />
+          <Typography component="legend">{place.num_reviews} review{place.num_reviews > 1 && 's'}</Typography>
+        </Box>
+
+        {/* price box */}
         <Box display="flex" justifyContent="space-between">
         <Typography variant="subtitle1">Price</Typography>
         <Typography gutterBottom variant="subtitle1">{place.price_level}</Typography>
