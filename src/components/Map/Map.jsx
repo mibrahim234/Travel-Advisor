@@ -4,7 +4,7 @@ import { Paper, Typography, useMediaQuery } from '@material-ui/core';
 // paper is div with a background color
 // use media query makes map more responsive 
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
-import Rating from '@material-ui/lab';
+import Rating from '@material-ui/lab/Rating';
 
 import useStyles from './styles'; 
 
@@ -33,13 +33,13 @@ const Map = ({ setCoordinates, setBounds, coordinates, places, setChildClicked, 
                 setCoordinates({ lat: e.center.lat, lng: e.center.lng });
                 setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
               }}        
-    // Used when you click on a restaurant on the map
+    // Eventlistener Used when you click on a restaurant on the map
     onChildClick={(child) => setChildClicked(child)}
     >        
             {/* Show place data */}
             {/* Using values as strings so have to use number constructor to convert them */}
             {/* need key since we are mapping over the div */}
-            {place?.map((place, i) => (
+            {places?.map((place, i) => (
                 <div
              className={classes.markerContainer}
             lat={Number(place.latitude)}

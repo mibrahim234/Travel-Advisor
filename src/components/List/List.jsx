@@ -5,7 +5,7 @@ import PlaceDetails from '../PlaceDetails/PlaceDetails';
 
 import useStyles from './styles';
 
-const List = ( {places} ) => {
+const List = ( { places, childClicked } ) => {
     const classes = useStyles();
     // first thing is the state, second thing is a function that modifies the state, accepts one param
     const [type, setType] = useState('restaurants');
