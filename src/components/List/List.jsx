@@ -20,13 +20,14 @@ const List = ( { places, childClicked, isLoading } ) => {
     // then map the array, _ means don't use first param, but need the second one
     // return refs i or if its doesnt exist create a new ref
     useEffect(() => {
-        setElRefs((refs) => Array(places.length).fill().map((_, i) => elRefs[i] || createRef()));
+        const refs = Array(places?.length).fill().map((_, i) => elRefs[i] || createRef());
+        
         setElRefs(refs);
       }, [places]);
 
     return (
         <div className={classes.container}>
-        <Typography variant="h4">Food & Dining around you</Typography>
+        <Typography variant="h4">Food AND Dining around you</Typography>
         {isLoading ? (
           <div className={classes.loading}>
             <CircularProgress size="5rem" />

@@ -9,6 +9,9 @@ import useStyles from './styles';
 // Passing in props, placed place in list and using it here 
 const PlaceDetails = ({ place }) => {
     const classes = useStyles(); 
+
+    if (selected) refProp?.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    
     return (
         // elevation will give it a nice shadow effect 
     <Card elevation={6}>
