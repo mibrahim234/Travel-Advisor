@@ -17,6 +17,7 @@ const App= () => {
     const [ bounds, setBounds ] = useState = (null);
 
     const [childClicked, setChildClicked] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
 
     // useeffect to get users location
     // geolocation is built in with user's api 
@@ -30,11 +31,13 @@ const App= () => {
     // if dependency array is empty code will only run at the start 
     // getplacesdata is a async function so we have to call .then 
     useEffect(() => {
+        setIsLoading(true);
         getPlacesData(bounds.sw, bounds.ne)
         // we grab the data with .then and sent them to the state 
             .then((data) => {
                 console.log(data);
                 setPlaces(data);
+                setIsLoading(false);
             })
     }, [coordinates, bounds]);
     return (
@@ -49,6 +52,7 @@ const App= () => {
         <List
          places={places}
          childClicked={childClicked}
+         isLoading={isLoading}
          /> 
         </Grid>
 

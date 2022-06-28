@@ -5,7 +5,7 @@ import PlaceDetails from '../PlaceDetails/PlaceDetails';
 
 import useStyles from './styles';
 
-const List = ( { places, childClicked } ) => {
+const List = ( { places, childClicked, isLoading } ) => {
     const classes = useStyles();
     // first thing is the state, second thing is a function that modifies the state, accepts one param
     const [type, setType] = useState('restaurants');
@@ -35,6 +35,7 @@ const List = ( { places, childClicked } ) => {
           <>
             <FormControl className={classes.formControl}>
               <InputLabel id="type">Type</InputLabel>
+
           {/* Select data has to be modified using state */}
           {/* onChange: gives us a callback function that has the event as the parameter */}
           {/* e.target.value will be populated with the data the user searches for */}
@@ -59,8 +60,10 @@ const List = ( { places, childClicked } ) => {
             {/* Give each grid a ref item */}
             <Grid container spacing={3} className={classes.list}>
             {places?.map((place, i) => (
-              <Grid ref={elRefs[i]} key={i} item xs={12}>
-                <PlaceDetails selected={Number(childClicked) === i} refProp={elRefs[i]} place={place} />
+              <Grid key={i} item xs={12}>
+                <PlaceDetails 
+                selected={Number(childClicked) === i} refProp={elRefs[i]} 
+                place={place} />
               </Grid>
             ))}
           </Grid>
