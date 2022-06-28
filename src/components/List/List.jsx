@@ -26,9 +26,15 @@ const List = ( { places, childClicked } ) => {
 
     return (
         <div className={classes.container}>
-            <Typography variant="h4">Restaurants, Hotels & Attractions around you</Typography>
+        <Typography variant="h4">Food & Dining around you</Typography>
+        {isLoading ? (
+          <div className={classes.loading}>
+            <CircularProgress size="5rem" />
+          </div>
+        ) : (
+          <>
             <FormControl className={classes.formControl}>
-                <InputLabel>Type</InputLabel>
+              <InputLabel id="type">Type</InputLabel>
           {/* Select data has to be modified using state */}
           {/* onChange: gives us a callback function that has the event as the parameter */}
           {/* e.target.value will be populated with the data the user searches for */}
@@ -40,22 +46,26 @@ const List = ( { places, childClicked } ) => {
             </FormControl>
 
                     {/* Rating formcontrol */}
-            <FormControl className={classes.formControl}>
-                <InputLabel>Rating</InputLabel>
-     <Select value={rating} onChange={(e) => setRating(e.target.value)}>
-        <MenuItem value={0}>All</MenuItem>
-    <MenuItem value={3}>Above 3.0</MenuItem>
-    <MenuItem value={4}>Above 4.0</MenuItem>
-    <MenuItem value={4.5}>Above 4.5</MenuItem>
-                </Select>
-            </FormControl>
+                    <FormControl className={classes.formControl}>
+            <InputLabel id="rating">Rating</InputLabel>
+            <Select id="rating" value={rating} onChange={(e) => setRating(e.target.value)}>
+              <MenuItem value="">All</MenuItem>
+              <MenuItem value="3">Above 3.0</MenuItem>
+              <MenuItem value="4">Above 4.0</MenuItem>
+              <MenuItem value="4.5">Above 4.5</MenuItem>
+            </Select>
+          </FormControl>
+
+            {/* Give each grid a ref item */}
             <Grid container spacing={3} className={classes.list}>
-                {places?.map((place, i) => (
-                    <Grid item key={i} xs={12}> 
-                        <PlaceDetails place={place} /> 
-                    </Grid>
-                ))}
-            </Grid>
+            {places?.map((place, i) => (
+              <Grid ref={elRefs[i]} key={i} item xs={12}>
+                <PlaceDetails selected={Number(childClicked) === i} refProp={elRefs[i]} place={place} />
+              </Grid>
+            ))}
+          </Grid>
+        </>
+      )}
         </div>
     );
 }
