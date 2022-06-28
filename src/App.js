@@ -19,6 +19,10 @@ const App= () => {
     const [childClicked, setChildClicked] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
 
+    const [type, setType] = useState('restaurants');
+    const [rating, setRating] = useState('');
+
+
     // useeffect to get users location
     // geolocation is built in with user's api 
     useEffect(() => {
@@ -49,10 +53,16 @@ const App= () => {
     <Grid container spacing={3} style={{ width: '100%' }}>
         {/* Will take full width on mobile devices and md to lg it will be 4 spaces */}
         <Grid item xs={12} md={4}>
+
+  {/* not a best practice to pass state around like this  */}
         <List
          places={places}
          childClicked={childClicked}
          isLoading={isLoading}
+         type={type}
+         setType={setType}
+         rating={rating}
+         setRating={setRating}
          /> 
         </Grid>
 

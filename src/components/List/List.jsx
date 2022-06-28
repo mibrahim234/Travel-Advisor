@@ -5,12 +5,10 @@ import PlaceDetails from '../PlaceDetails/PlaceDetails';
 
 import useStyles from './styles';
 
-const List = ( { places, childClicked, isLoading } ) => {
+const List = ( { places, childClicked, isLoading, type, setType, rating, setRating } ) => {
     const classes = useStyles();
     // first thing is the state, second thing is a function that modifies the state, accepts one param
-    const [type, setType] = useState('restaurants');
-    const [rating, setRating] = useState('');
-
+    
     // State that will contain all the references
     // the places will fill up this states' []
     const [elRefs, setElRefs] = useState([]);
@@ -21,7 +19,7 @@ const List = ( { places, childClicked, isLoading } ) => {
     // return refs i or if its doesnt exist create a new ref
     useEffect(() => {
         const refs = Array(places?.length).fill().map((_, i) => elRefs[i] || createRef());
-        
+
         setElRefs(refs);
       }, [places]);
 
