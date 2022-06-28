@@ -11,6 +11,13 @@ const List = ( { places, childClicked } ) => {
     const [type, setType] = useState('restaurants');
     const [rating, setRating] = useState('');
 
+    // State that will contain all the references
+    const [elRefs, setElRefs] = useState([]);
+
+    // recall this useEffect everytime the places change
+    useEffect(() => {
+
+    }, [places]);
     return (
         <div className={classes.container}>
             <Typography variant="h4">Restaurants, Hotels & Attractions around you</Typography>
