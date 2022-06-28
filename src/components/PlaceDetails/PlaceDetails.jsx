@@ -1,16 +1,16 @@
 import React from 'react';
-import { Box, Typography, Button, Card, CardMedia, CardContent, CardActions, Chip} from '@material-ui/core';
+import { Box, Typography, Button, Card, CardMedia, CardContent, CardActions, Chip } from '@material-ui/core';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import PhoneIcon from '@material-ui/icons/Phone';
 import Rating from '@material-ui/lab/Rating';
 
-import useStyles from './styles';
+import useStyles from './styles.js';
 
 // Passing in props, placed place in list and using it here 
 const PlaceDetails = ({ place }) => {
     const classes = useStyles(); 
 
-    if (selected) refProp?.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  //  if (selected) refProp?.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     
     return (
         // elevation will give it a nice shadow effect 
