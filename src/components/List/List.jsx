@@ -12,12 +12,18 @@ const List = ( { places, childClicked } ) => {
     const [rating, setRating] = useState('');
 
     // State that will contain all the references
+    // the places will fill up this states' []
     const [elRefs, setElRefs] = useState([]);
 
     // recall this useEffect everytime the places change
+    //.fill will start filling the array
+    // then map the array, _ means don't use first param, but need the second one
+    // return refs i or if its doesnt exist create a new ref
     useEffect(() => {
+        setElRefs((refs) => Array(places.length).fill().map((_, i) => elRefs[i] || createRef()));
+        setElRefs(refs);
+      }, [places]);
 
-    }, [places]);
     return (
         <div className={classes.container}>
             <Typography variant="h4">Restaurants, Hotels & Attractions around you</Typography>
